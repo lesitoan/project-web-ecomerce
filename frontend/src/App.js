@@ -1,71 +1,34 @@
-import axios from 'axios';
-import { useState, useEffect, useLayoutEffect } from 'react';
-import './App.css';
-import './pages/HomePage';
-import HomePage from './pages/HomePage';
-
-
-const courses = [];
-
-const TodoList = () => {
-  const [toDo, setToDo] = useState('');
-  const [lists, setLists] = useState(courses);
-
-  const handleOnChange = (toDo) => {
-    setToDo(toDo);
-  }
-
-  const handlaeSubmit = () => {
-    setLists(prev => [toDo, ...prev])
-    setToDo('');
-  }
-
-  return (
-    <div>
-      <input value={toDo} type="text" onChange={(e) => handleOnChange(e.target.value)} />
-      <button onClick={handlaeSubmit} >ADD</button>
-      <ul>
-        {lists.map((item, index) => (
-          <li key={index} >{item}</li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
-// https://jsonplaceholder.typicode.com/posts
-const UseEffectConponent = () => {
-  const [title, setTitle] = useState('');
-
-  const handleOnChange = (title) => {
-    setTitle(title);
-  }
-
-  useEffect(async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/api/v1/user/users');
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
-  }, [])
-
-  return (
-    <div>
-      <input type="text" onChange={e => handleOnChange(e.target.value)} />
-    </div>
-  )
-}
+import { Fragment } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { publicRoutes } from './routes';
+import DefaultLayout from './conponents/Layouts/DefaultLayout';
 
 const App = () => {
   return (
-    <div className="App">
-      <TodoList />
+    <BrowserRouter>
+      <div className="App">
+      <Routes>
+        {publicRoutes.map((route, index) => {
+          const Page = route.page;
+          const Layout = route.layout === null ? Fragment : DefaultLayout;
+          return (
+            <Route 
+              key={index} 
+              path={route.path} 
+              element={<Layout><Page /></Layout>}
+            >
+            </Route>
+          )
+        })}
+      </Routes>
     </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+
 /* chưa học bài 44 45 48
 - useLayoutEffect: sử dụng gần giống như useEffect, chỉ khác là useLayoutEffect chạy đồng bộ từ trên xuống dưới
   render ra giao diện sau khi chạy qua useLayoutEffect
