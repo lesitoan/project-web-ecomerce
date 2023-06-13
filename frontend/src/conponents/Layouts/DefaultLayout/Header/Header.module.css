@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffba00;
+    min-height: 6vh;
+    font-size: 25px;
+}
+
+.logo {}
+
+.search {}
+
+.login {}

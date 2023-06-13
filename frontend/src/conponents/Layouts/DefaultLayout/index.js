@@ -1,11 +1,11 @@
-import Header from './Header';
-import Footer from './Footer';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 const DefaultLayout = ({ children }) => {
     return (
         <div>
             <Header />
-            <div className="content">{ children }</div>
+            <div>{children}</div>
             <Footer />
         </div>
     )

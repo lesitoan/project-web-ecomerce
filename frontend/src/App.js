@@ -7,21 +7,21 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
-      <Routes>
-        {publicRoutes.map((route, index) => {
-          const Page = route.page;
-          const Layout = route.layout === null ? Fragment : DefaultLayout;
-          return (
-            <Route 
-              key={index} 
-              path={route.path} 
-              element={<Layout><Page /></Layout>}
-            >
-            </Route>
-          )
-        })}
-      </Routes>
-    </div>
+        <Routes>
+          {publicRoutes.map((route, index) => {
+            const Page = route.page;
+            const Layout = route.layout === null ? Fragment : DefaultLayout;
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={<Layout><Page /></Layout>}
+              >
+              </Route>
+            )
+          })}
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }
