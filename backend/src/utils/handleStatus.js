@@ -10,7 +10,7 @@ const handleSuccess = (statusCode, message, data) => {
     return {
         status: statusCode,
         message: message,
-        response: data,
+        data: data,
     }
 }
 

@@ -59,7 +59,7 @@ const getAllUsers = async (req, res) => {
 const refreshAccessToken = async (req, res) => {
     try {
         if (!req.headers.authorization) {
-            throw "Unauthorized !!!";
+            return res.status(400).json(handleError('ERR', 'refresh token failed !!!'));
         }
         const accessToken = req.headers.authorization.split(' ')[1];
         const response = await userService.refreshAccessToken(accessToken);

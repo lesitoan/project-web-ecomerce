@@ -1,14 +1,16 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import style from './loginPage.module.css';
-import { login, testApi } from '../../apis/apiCalls';
+import { login } from '../../apis/userApi';
+
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPasswordl] = useState('');
 
-    const handleSubmit = async () => {
-        const response = await login({ email, password })
+    const handleSubmit = () => {
+        login({ email, password })
     }
 
     return (
@@ -33,6 +35,7 @@ const LoginPage = () => {
                     className={clsx(style.formItem)}
                     onClick={handleSubmit}
                 >
+                    {/* <Link to='/' >Login</Link> */}
                     Login
                 </button>
             </div>
