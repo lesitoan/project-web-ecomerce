@@ -12,6 +12,7 @@ html {
 }
 
 Body {
+    color: #fff;
     background-color: rgb(28, 40, 59);
     margin: 0 10%;
     font-family: 'Roboto', sans-serif;

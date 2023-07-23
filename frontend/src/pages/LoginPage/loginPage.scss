@@ -1,0 +1,26 @@
+.loginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(47, 47, 47);
+    margin: 2vh 0;
+    min-height: 85vh;
+
+    .login_container {
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        padding: 10px;
+        min-width: 400px;
+        min-height: 400px;
+    }
+
+    input {
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .button {
+        font-size: 16px;
+        height: 40px;
+    }
+}
